@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Никита "Мики" - Досье</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0c0c0c;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 0 0 40px 0;
+            border-bottom: 1px solid #333;
+            margin-bottom: 40px;
+        }
+
+        .name {
+            font-size: 3em;
+            font-weight: 300;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .codename {
+            font-size: 1.2em;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .status {
+            display: inline-block;
+            background: #1a1a1a;
+            padding: 8px 20px;
+            border: 1px solid #333;
+            color: #ccc;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        /* Вкладки */
+        .tabs {
+            display: flex;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            margin-bottom: 30px;
+        }
+
+        .tab {
+            padding: 15px 25px;
+            background: #1a1a1a;
+            border: none;
+            color: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .tab:hover {
+            background: #252525;
+        }
+
+        .tab.active {
+            background: #333;
+            color: #fff;
+            border-bottom: 2px solid #555;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Quick Stats */
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: #333;
+            margin-bottom: 40px;
+            border: 1px solid #333;
+        }
+
+        .stat-item {
+            background: #0c0c0c;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-label {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            color: #fff;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        /* Content Sections */
+        .content-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            color: #fff;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        /* Scar Tags */
+        .scar-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .scar-tag {
+            background: #1a1a1a;
+            padding: 10px 20px;
+            border: 1px solid #333;
+            color: #ccc;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .scar-tag:hover {
+            background: #252525;
+            border-color: #555;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 25px 0 25px 40px;
+            border-left: 2px solid #333;
+            margin-left: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            background: #1a1a1a;
+            border-left-color: #555;
+        }
+
+        .timeline-item:last-child {
+            border-left: 2px solid transparent;
+        }
+
+        .timeline-year {
+            position: absolute;
+            left: -60px;
+            top: 25px;
+            background: #0c0c0c;
+            color: #888;
+            font-size: 0.9em;
+            padding: 8px 15px;
+            border: 1px solid #333;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .timeline-content {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* Quote */
+        .quote {
+            background: #1a1a1a;
+            padding: 30px;
+            border-left: 3px solid #555;
+            margin: 40px 0;
+            font-style: italic;
+            color: #888;
+            line-height: 1.8;
+        }
+
+        /* Psychology */
+        .psychology-content {
+            color: #ccc;
+            line-height: 1.8;
+        }
+
+        .psychology-content p {
+            margin-bottom: 15px;
+        }
+
+        /* Relationships */
+        .relationship-item {
+            background: #1a1a1a;
+            padding: 20px;
+            margin: 15px 0;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+
+        .relationship-item:hover {
+            background: #252525;
+            border-color: #555;
+        }
+
+        .relationship-item strong {
+            color: #fff;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0 20px 0;
+            color: #666;
+            font-size: 0.9em;
+            border-top: 1px solid #333;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .quick-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .name {
+                font-size: 2em;
+            }
+            
+            .timeline-year {
+                position: static;
+                display: inline-block;
+                margin-bottom: 10px;
+            }
+            
+            .timeline-item {
+                padding-left: 20px;
+                margin-left: 0;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                padding: 12px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="name">Никита "Мики"</h1>
+            <div class="codename">Оперативный сотрудник</div>
+            <div class="status">Статус: Активен</div>
+        </div>
+
+        <!-- Вкладки -->
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('main')">Основное</button>
+            <button class="tab" onclick="showTab('bio')">Биография</button>
+            <button class="tab" onclick="showTab('psycho')">Психология</button>
+            <button class="tab" onclick="showTab('relations')">Связи</button>
+        </div>
+
+        <!-- Основная информация -->
+        <div id="main" class="tab-content active">
+            <!-- Статистика -->
+            <div class="quick-stats">
+                <div class="stat-item">
+                    <div class="stat-label">Возраст</div>
+                    <div class="stat-value">29 лет</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Позывной</div>
+                    <div class="stat-value">Мики</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Семейное положение</div>
+                    <div class="stat-value">Женат</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Рост</div>
+                    <div class="stat-value">187 см</div>
+                </div>
+            </div>
+
+            <!-- Опознавательные знаки -->
+            <div class="content-section">
+                <h2 class="section-title">Опознавательные знаки</h2>
+                <div class="scar-tags">
+                    <div class="scar-tag">Шрам-гайка на правой руке</div>
+                    <div class="scar-tag">Шрам на лице</div>
+                    <div class="scar-tag">Тактическая маска</div>
+                </div>
+            </div>
+
+            <!-- Дополнительная информация -->
+            <div class="content-section">
+                <h2 class="section-title">Дополнительная информация</h2>
+                <div class="psychology-content">
+                    <p>Сотрудник обладает высокой физической подготовкой и профессиональными навыками. Специализируется на тактических операциях и защите.</p>
+                    <p>Прошел полный курс боевой подготовки. Владеет различными видами оружия и hand-to-hand combat.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Биография -->
+        <div id="bio" class="tab-content">
+            <div class="content-section">
+                <h2 class="section-title">Хронология событий</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2 года</div>
+                        <div class="timeline-content">
+                            Потеря отца. Мать начинает употреблять алкоголь и наркотики.
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">15 лет</div>
+                        <div class="timeline-content">
+                            Во время ремонта мотоцикла отца получил травму руки. Остался шрам в форме гайки.
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">19 лет</div>
+                        <div class="timeline-content">
+                            Познакомился с Анастасией, защитив её от нападавших. Получил шрам на лице в схватке с ножом.
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">25 лет</div>
+                        <div class="timeline-content">
+                            Мать погибла от передозировки. Остался совсем один.
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">27 лет</div>
+                        <div class="timeline-content">
+                            Женился на Анастасии. Подписал первый контракт на службу.
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">29 лет</div>
+                        <div class="timeline-content">
+                            Подписал повторный контракт на службу.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Психология -->
+        <div id="psycho" class="tab-content">
+            <!-- Цитата -->
+            <div class="quote">
+                "Они видят шрамы и думают, что знают мою историю. Но шрамы — это только надписи на обложке. Книгу ещё нужно прочитать."
+            </div>
+
+            <!-- Психологический портрет -->
+            <div class="content-section">
+                <h2 class="section-title">Психологический портрет</h2>
+                <div class="psychology-content">
+                    <p>Мужчина со сложным прошлым, научившийся полагаться только на себя. Потеря близких закалила характер. Ответственно относится к обязанностям, физически вынослив.</p>
+                    
+                    <p>На службе проявляет себя как профессионал, вне работы - преданный муж. Шрамы носят не только физический, но и символический характер, напоминая о ключевых моментах жизни.</p>
+                    
+                    <p>Обладает развитым чувством ответственности и лояльности. Прошлые травмы трансформировал в операционные преимущества, демонстрируя исключительную устойчивость к стрессовым ситуациям.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Связи -->
+        <div id="relations" class="tab-content">
+            <div class="content-section">
+                <h2 class="section-title">Критические связи</h2>
+                <div class="relationship-item">
+                    <strong>Анастасия</strong>
+                    Жена и основной мотивационный фактор. Главная причина возвращаться живым с заданий. Именно её образ заставляет быть лучше и сильнее. Отношения характеризуются абсолютным доверием и взаимопониманием.
+                </div>
+                
+                <div class="relationship-item">
+                    <strong>Память об отце</strong>
+                    Формирует операционную этику и служит нравственным компасом в сложных ситуациях. Воспоминания об отце помогают сохранять моральные принципы в условиях оперативной работы.
+                </div>
+
+                <div class="relationship-item">
+                    <strong>Опыт потерь</strong>
+                    Потеря матери и сложное детство сформировали характер. Этот опыт научил ценить каждое мгновение жизни и быть готовым к любым вызовам.
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>Досье обновлено: ██/██/████</div>
+            <div style="margin-top: 5px;">Классификация: Конфиденциально</div>
+        </div>
+    </div>
+
+    <script>
+        // Функция переключения вкладок
+        function showTab(tabName) {
+            // Скрыть все вкладки
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Убрать активный класс у всех кнопок
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Показать выбранную вкладку
+            document.getElementById(tabName).classList.add('active');
+            
+            // Сделать кнопку активной
+            event.currentTarget.classList.add('active');
+        }
+
+        // Интерактивность для элементов
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = '#1a1a1a';
+                this.style.borderLeftColor = '#555';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = 'transparent';
+                this.style.borderLeftColor = '#333';
+            });
+        });
+
+        document.querySelectorAll('.scar-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = '#252525';
+                this.style.borderColor = '#555';
+            });
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = '#1a1a1a';
+                this.style.borderColor = '#333';
+            });
+        });
+
+        document.querySelectorAll('.relationship-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = '#252525';
+                this.style.borderColor = '#555';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = '#1a1a1a';
+                this.style.borderColor = '#333';
+            });
+        });
+    </script>
+</body>
+</html>
